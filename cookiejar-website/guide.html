@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use Cookie Jar - Complete Guide</title>
+  <meta name="description" content="Learn how to use Cookie Jar to save affirmations, tweets, and videos. Build your personal motivation vault.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      min-height: 100vh;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: #FFD93D;
+      text-decoration: none;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .header-emoji {
+      font-size: 64px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #FFD93D, #FF6B35);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #a0a0b0;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 60px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2 .emoji {
+      font-size: 32px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #c0c0d0;
+      font-size: 16px;
+    }
+
+    .highlight-box {
+      background: rgba(255, 107, 53, 0.1);
+      border-left: 4px solid #FF6B35;
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: #e0e0e0;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+    }
+
+    .step-card h4 {
+      color: #FFD93D;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 20px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 28px;
+      position: relative;
+      color: #c0c0d0;
+    }
+
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #FFD93D;
+      font-weight: 600;
+    }
+
+    .screenshot-placeholder {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 24px 0;
+      color: #606070;
+    }
+
+    .platform-tabs {
+      display: flex;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .platform-tab {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 12px 24px;
+      color: #a0a0b0;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .platform-tab:hover,
+    .platform-tab.active {
+      background: rgba(255, 215, 61, 0.1);
+      border-color: #FFD93D;
+      color: #FFD93D;
+    }
+
+    .tip-box {
+      background: rgba(255, 215, 61, 0.1);
+      border: 1px solid rgba(255, 215, 61, 0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .tip-box h4 {
+      color: #FFD93D;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tip-box p {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 24px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+
+    .faq-answer {
+      color: #a0a0b0;
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 215, 61, 0.1));
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0 40px;
+    }
+
+    .cta-box h3 {
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: #c0c0d0;
+      margin-bottom: 24px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #1a1a2e;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 14px;
+      color: #606070;
+    }
+
+    .footer a {
+      color: #a0a0b0;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+      .platform-tabs {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back-link">← Back to Home</a>
+
+    <header class="header">
+      <span class="header-emoji">🍪</span>
+      <h1>How to Use Cookie Jar</h1>
+      <p class="subtitle">Your complete guide to building a personal motivation vault</p>
+    </header>
+
+    <!-- Introduction -->
+    <section>
+      <p>Cookie Jar is inspired by David Goggins' mental technique of storing your wins, motivational moments, and powerful words in a mental "cookie jar" that you can reach into when life gets tough.</p>
+      
+      <p>Our app takes this concept digital — letting you save affirmations, tweets, and YouTube videos that you can revisit whenever you need motivation.</p>
+
+      <div class="highlight-box">
+        <p><strong>The concept is simple:</strong> When you're at your best, fill the jar. When you're struggling, pull a cookie and remind yourself who you are.</p>
+      </div>
+    </section>
+
+    <!-- Getting Started on Mobile -->
+    <h2><span class="emoji">📱</span> Getting Started on iPhone</h2>
+    
+    <p>Cookie Jar is available exclusively on iOS. Here's how to get started:</p>
+
+    <div class="step-card">
+      <h4>Step 1: Download</h4>
+      <p>Download Cookie Jar from the App Store and start using it right away.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>Step 2: Onboarding</h4>
+      <p>Swipe through the onboarding screens to understand the core features: saving content and pulling random cookies when you need motivation.</p>
+    </div>
+
+    <div class="tip-box">
+      <h4>💡 Pro Tip</h4>
+      <p>Enable notifications to get daily reminders to pull a cookie — it's a great way to start your morning with positive energy.</p>
+    </div>
+
+    <!-- Adding Content -->
+    <h2><span class="emoji">✍️</span> Adding Content to Your Jar</h2>
+
+    <p>There are three types of content you can save:</p>
+
+    <h3>1. Text Affirmations</h3>
+    <p>Write personal affirmations, motivational quotes, or reminders to yourself.</p>
+    <ul>
+      <li>Tap "Add New" from the home screen</li>
+      <li>Select "Text" as the content type</li>
+      <li>Write your affirmation</li>
+      <li>Save it to your jar</li>
+    </ul>
+
+    <div class="tip-box">
+      <h4>💡 Affirmation Ideas</h4>
+      <p>"I've overcome harder things than this." • "I am capable, strong, and resilient." • "This challenge is making me stronger."</p>
+    </div>
+
+    <h3>2. Tweet Links</h3>
+    <p>Save inspiring tweets before they disappear from your timeline.</p>
+    <ul>
+      <li>Copy the tweet URL from Twitter/X</li>
+      <li>Tap "Add New" and select "Tweet"</li>
+      <li>Paste the URL</li>
+      <li>Add a note about why it inspires you</li>
+    </ul>
+
+    <h3>3. YouTube Videos</h3>
+    <p>Keep motivational speeches, interviews, and videos that light your fire.</p>
+    <ul>
+      <li>Copy the YouTube video URL</li>
+      <li>Tap "Add New" and select "YouTube"</li>
+      <li>Paste the URL</li>
+      <li>Add a description to remember why you saved it</li>
+    </ul>
+
+    <!-- Pull a Cookie -->
+    <h2><span class="emoji">🔥</span> Pull a Cookie</h2>
+
+    <p>The magic happens when you need motivation. Tap the big cookie on the home screen to pull a random piece of content from your jar.</p>
+
+    <ul>
+      <li><strong>Text affirmations</strong> open in the player with AI voice playback</li>
+      <li><strong>Tweets</strong> open directly in Twitter/X</li>
+      <li><strong>YouTube videos</strong> open in the YouTube app</li>
+    </ul>
+
+    <div class="highlight-box">
+      <p>The randomness is intentional — you never know what you need to hear until you hear it. Trust the jar.</p>
+    </div>
+
+    <!-- Using on Laptop/Desktop -->
+    <h2><span class="emoji">💻</span> Accessing on Laptop or Desktop</h2>
+
+    <p>Cookie Jar is currently a mobile-first iOS app. However, there are ways to access your motivation on larger screens:</p>
+
+    <h3>Option 1: iPhone Mirroring (macOS Sequoia)</h3>
+    <p>If you have macOS Sequoia, you can mirror your iPhone directly to your Mac:</p>
+    <ul>
+      <li>Ensure your iPhone and Mac are signed into the same Apple ID</li>
+      <li>Open the "iPhone Mirroring" app on your Mac</li>
+      <li>Your iPhone screen appears on your Mac</li>
+      <li>Use Cookie Jar as if you were on your phone</li>
+    </ul>
+
+    <h3>Option 2: iPad with Sidecar</h3>
+    <p>If Cookie Jar becomes available on iPad, you can use Sidecar to extend your Mac display:</p>
+    <ul>
+      <li>Connect your iPad as a second display</li>
+      <li>Run Cookie Jar on the iPad portion</li>
+      <li>Keep motivation visible while working</li>
+    </ul>
+
+    <h3>Option 3: Export Your Affirmations</h3>
+    <p>For desktop access to your written affirmations:</p>
+    <ul>
+      <li>Keep a note in Apple Notes or Notion synced across devices</li>
+      <li>Copy your favorite affirmations there for desktop access</li>
+      <li>Use the app for the voice playback experience on mobile</li>
+    </ul>
+
+    <div class="tip-box">
+      <h4>🚀 Coming Soon</h4>
+      <p>We're exploring a web companion app that would let you manage your cookie jar from any browser. Stay tuned!</p>
+    </div>
+
+    <!-- Library Management -->
+    <h2><span class="emoji">📚</span> Managing Your Library</h2>
+
+    <p>The Library tab organizes all your saved content by type:</p>
+
+    <ul>
+      <li><strong>Text tab</strong> — all your written affirmations</li>
+      <li><strong>Tweets tab</strong> — saved tweet links</li>
+      <li><strong>Videos tab</strong> — YouTube links</li>
+    </ul>
+
+    <p>From the library, you can:</p>
+    <ul>
+      <li>Play any affirmation with AI voice</li>
+      <li>Edit content to update or refine it</li>
+      <li>Delete items you no longer need</li>
+    </ul>
+
+    <!-- FAQ -->
+    <h2><span class="emoji">❓</span> Frequently Asked Questions</h2>
+
+
+    <div class="faq-item">
+      <p class="faq-question">Is my data private?</p>
+      <p class="faq-answer">Yes. Your affirmations and saved content are stored securely and are only accessible by you. We don't share or sell your data. Read our full <a href="/privacy.html">Privacy Policy</a>.</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-question">Does it work offline?</p>
+      <p class="faq-answer">You need an internet connection to sync your content across devices. Saved content is available offline once synced.</p>
+    </div>
+
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Ready to build your jar?</h3>
+      <p>Download Cookie Jar for free today.</p>
+      <a href="#" class="cta-btn">Download on App Store</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 Cookie Jar. All rights reserved.</p>
+      <p><a href="/">Home</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
+      <p style="margin-top: 12px;">Contact: <a href="mailto:arshashfaqhuseinmansuri@gmail.com">arshashfaqhuseinmansuri@gmail.com</a></p>
+    </footer>
+  </div>
+</body>
+</html>

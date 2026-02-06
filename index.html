@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Jar - Your Personal Motivation Vault</title>
+  <meta name="description" content="Store what moves you. Revisit when you need it. Save affirmations, tweets, and videos - access them whenever life gets hard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-emoji {
+      font-size: 96px;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #FFD93D, #FF6B35);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: #a0a0b0;
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .app-store-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #1a1a2e;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .app-store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+    }
+
+    /* Screenshots */
+    .screenshots {
+      padding: 60px 0;
+      overflow: hidden;
+    }
+
+    .screenshots-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .screenshots-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .screenshot {
+      width: 200px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .screenshot:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .screenshot {
+        width: 150px;
+        border-radius: 16px;
+      }
+    }
+
+    /* Features */
+    .features {
+      padding: 60px 0;
+    }
+
+    .features-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 36px;
+      }
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .feature-emoji {
+      font-size: 40px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: #a0a0b0;
+    }
+
+    /* How it works */
+    .how-it-works {
+      padding: 60px 0;
+    }
+
+    .how-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #FFD93D, #FF6B35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .step-content p {
+      font-size: 14px;
+      color: #a0a0b0;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 60px 40px;
+      background: rgba(255, 107, 53, 0.1);
+      border-radius: 24px;
+      margin: 40px 0;
+    }
+
+    .cta-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .cta-subtitle {
+      font-size: 16px;
+      color: #a0a0b0;
+      margin-bottom: 32px;
+    }
+
+    /* Blog link */
+    .blog-link {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .blog-link a {
+      color: #FFD93D;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .blog-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 40px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #a0a0b0;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      color: #606070;
+    }
+
+    .footer-contact {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #606070;
+    }
+
+    .footer-contact a {
+      color: #a0a0b0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <span class="hero-emoji">🍪</span>
+      <h1 class="hero-title">Cookie Jar</h1>
+      <p class="hero-subtitle">Store what moves you. Revisit when you need it. Your personal vault for motivation.</p>
+      <a href="#" class="app-store-btn">Download on App Store</a>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots">
+      <h2 class="screenshots-title">See it in action</h2>
+      <div class="screenshots-grid">
+        <img src="screenshots/home.jpg" alt="Cookie Jar Home Screen" class="screenshot">
+        <img src="screenshots/onboarding-pull.jpg" alt="Cookie Jar Pull Feature" class="screenshot">
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <h2 class="features-title">Everything you need to stay motivated</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-emoji">✍️</span>
+          <h3 class="feature-title">Save Affirmations</h3>
+          <p class="feature-desc">Write the words that fuel you.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">🐦</span>
+          <h3 class="feature-title">Save Tweets</h3>
+          <p class="feature-desc">Capture inspiring tweets before they disappear.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-emoji">▶️</span>
+          <h3 class="feature-title">Save Videos</h3>
+          <p class="feature-desc">Keep YouTube videos that light your fire.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+      <h2 class="how-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Fill your jar</h3>
+            <p>Add affirmations, tweets, and YouTube videos that inspire you.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Pull a cookie</h3>
+            <p>When you need a boost, pull a random cookie from your jar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2 class="cta-title">Ready to build your jar?</h2>
+      <p class="cta-subtitle">Download for free today.</p>
+      <a href="#" class="app-store-btn">Download Free</a>
+    </section>
+
+    <!-- Blog link -->
+    <div class="blog-link">
+      <a href="/guide.html">📖 Read our guide: How to use Cookie Jar →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/guide.html">User Guide</a>
+      </div>
+      <p class="footer-copy">© 2026 Cookie Jar. All rights reserved.</p>
+      <p class="footer-contact">Contact: <a href="mailto:arshashfaqhuseinmansuri@gmail.com">arshashfaqhuseinmansuri@gmail.com</a></p>
+    </footer>
+  </div>
+</body>
+</html>
